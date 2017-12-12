@@ -1,0 +1,58 @@
+body,html,.whlediv,.maindiv{
+    height:100%;
+    width:100%;
+    margin:0;
+    padding:0
+}
+.maindiv{
+    display:flex 
+}
+.outerdiv{
+    height:400px;
+    width:400px;
+    margin:auto;
+    border:1px solid #ddd
+}
+header{
+    border-bottom:1px solid #ddd
+}
+header + div{
+    text-align:center
+}
+header > p{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Lato';
+    font-weight: bold
+}
+input,input + div{
+    width: 350px;
+    margin: 20px 20px 0 20px;
+    padding: 10px 0 10px 10px;
+    border-radius: 2px;
+    border: 1px solid gray;
+    font:normal 11px 'Lato',sana-serif;
+}
+input + div{
+    border:none;
+    height:25px;
+    font-size: 20px;
+    color:red;
+}
+a{
+    text-decoration:none;
+    font-family:sans-serif;
+    cursor:pointer
+}
+a:hover{
+    text-decoration:underline
+}
+button{
+    padding: 15px 45px;
+    display: block;
+    margin: 10px auto;
+    background-color: lightseagreen;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer
+}

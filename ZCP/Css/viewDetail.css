@@ -1,0 +1,73 @@
+
+.viewprofile{
+    height:100%;
+    width:80%;
+    background-color:white;
+    display:none;
+}
+.viewprofile > header{
+    height: 45px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 15px 0;
+    box-sizing: border-box
+}
+.viewsearch{
+    height:80%;
+    width:500px;
+    border-radius:3px;
+    background-color:#eee;
+    border:1px solid #ddd;
+}
+.viewsearch > input{
+    background: transparent;
+    border: none;
+    width: 450px;
+    font-size: 15px;
+    outline: none;
+    color: gray
+}
+.viewsearch > i{
+    padding: 8px;
+    color: gray
+}
+.photodiv{
+    height:200px;
+    width:100%;
+    border-bottom: 1px solid #ddd;
+    display:flex;
+}
+.photoouterdiv,.photoround{
+    margin:auto;
+}
+.photoround{
+    height: 100px;
+    width: 100px;
+    border:2px solid #eee;
+    border-radius:50%;
+    background-size:100% 100%
+}
+.name{
+    text-align: center;
+    font: 20px 'lato',sans-serif;
+    padding:15px
+}
+.mail,.phone{
+    display:inline-block;
+    margin:0;
+    font:15px 'Lato',sans-serif
+}
+.phone{
+    padding-left:75px
+}
+.myfeeddiv{
+    height:calc(100% - 46px);
+    width:100%;
+    overflow:auto
+}
+.mailicon,.phoneicon{
+    padding:0 10px
+}
+
+
+

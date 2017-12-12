@@ -1,0 +1,195 @@
+body,html,.whlediv,.maindiv{
+    height:100%;
+    width:100%;
+    margin:0;
+    padding:0
+}
+header > div:nth-child(2) div i,#second > input:nth-child(5),#second > input:nth-child(7),#second > input:nth-child(9){
+    cursor:pointer
+}
+header > div:nth-child(2) div p{
+    cursor:default
+}
+.clear{
+    clear:both
+}
+/*--- Header Part ---*/
+header{
+    height:50px;
+    width:100%;
+    border-bottom:1px solid #ddd
+}
+header > div:nth-child(2){
+    float:right;
+    height:100%;
+    width:150px;
+    color:#ABD157
+}
+header > div:nth-child(2), header > div:nth-child(2) div,header + div,#fir-ul{
+    display:flex
+}
+header > div:nth-child(2) div p,header + div > div > div:first-child{
+    font: bold 15px 'Lato', sans-serif
+}
+header > div:nth-child(2) div i{
+    margin: 10px 5px;
+    font-size: 23px;
+    padding: 2px 5px
+}
+/*--- Bottom Part ---*/
+header + div{
+    height:calc(100% - 51px);
+    width:100%
+}
+header + div > div{
+    margin:auto;
+    height:520px;
+    width:500px;
+    border:1px solid #eee
+}
+header + div > div > div:first-child{
+    width:100%;
+    border-bottom:1px solid #eee;
+    text-align:center;
+    color:#ABD157;
+    text-transform:uppercase
+}
+/*--- Animation Part ---*/
+ul{
+    margin:20px 0 0 25px;
+    padding:0px;
+    counter-reset:step
+}
+ul .fir {
+    width:30px;
+    height:30px;
+    color:white;
+    text-align: center;
+    display: inline-block;
+    background: rgba(158, 158, 158, 0.2);
+    line-height:30px;
+    border-radius:50%
+}
+ul .lin {
+    margin-top:13px
+}
+ul .lin,.lin > div {
+    width:105px;
+    height:5px;
+    background:rgba(158, 158, 158, 0.2);
+}
+.lin >div {
+    width:0px;
+ }
+ ul li{
+     list-style-type:none
+ }
+ 
+ #first,#second{
+    width: 80%;
+    margin:15px auto;
+    display:none
+ }
+ #third,#fourth{
+    text-align:center;
+    display:none
+ }
+ #first{
+     display:block
+ }
+ #first > input,#second > input, #second > select,#third > select,#fourth > select,#third > input{
+    width:90%;
+    padding:15px;
+    border:1px solid #ddd;
+    margin-top:15px;
+    border-radius:5px;
+    outline:none;
+ }
+  #third > input{
+     width:84%;
+ }
+ #third > select,#fourth > select{
+     margin:9px 0
+ }
+ #first > input:focus,#second > input:focus,#third > select:focus{
+    border:1px solid #ABD157
+ }
+ #second > input:nth-child(5),#second > input:nth-child(7),#second > input:nth-child(9){
+    float:left;
+    width:5%
+ }
+ #second > input:nth-child(7),#second > input:nth-child(9){
+     margin-left:30px
+ }
+ #second > span{
+    font: bold 15px 'Lato',sans-serif;
+    float: left;
+    margin-top: 10px
+ }
+ .previous,.next{
+    padding: 15px 25px;
+    display: inline-block;
+    margin: 10px 55px;
+    background-color: #ABD157;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #ABD157;
+    border-radius: 3px;
+    cursor: pointer
+ }
+ .next, .nextsubmit{
+   float:right;
+ }
+.label{
+    height: 150px;
+    width: 300px;
+    background: url("http://cbw.ge/wp-content/uploads/2017/07/elektromos_auto.jpg");
+    background-size:100% 100%;
+    border: 1px solid #eee;
+    overflow: hidden;
+    display:block;
+    margin: 45px auto 15px;
+    cursor:pointer;
+    position:relative;
+    border-radius:5px
+}
+.label:hover .blur{
+    display:block;
+}
+.blur{
+    height: 100%;
+    width: 100%;
+    background: #34383e;
+    opacity: 0.8;
+    color: white;
+    text-align: center;
+    font: bold 13px 'Lato',sans-serif;
+    position: absolute;
+    top: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 150px;
+    border-radius:5px;
+    display:none
+}
+.label > input{
+    visibility:hidden
+}
+ .previous{
+     display:none
+ }
+ .check{
+    display: block;
+    padding: 5px 0 0 25px;
+    text-align: left;
+    font: bold 13px 'Lato',sans-serif
+ }
+ .check > input{
+    cursor:pointer;
+ }
+ .error{
+    height: 30px;
+    display: block;
+    color: red;
+    font: bold 13px 'Lato',sans-serif
+ }

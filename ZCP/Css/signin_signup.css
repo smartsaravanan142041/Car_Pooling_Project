@@ -1,0 +1,187 @@
+body,html,.body-div,.whole,.main{
+    height:100%;
+    width:100%;
+    font-family:'Lato',sans-serif;
+    overflow:hidden
+}
+p,ul,li,h1,h2,h3,h4,h5,h6,body,html,.body-div,.whole,.main{
+    margin:0px;
+    padding:0px
+}
+::selection{
+    background:#ABD157;
+}
+button{
+    cursor: pointer
+}
+/*-------------------------------------------- HEADER PART ------------------------------------------------------------*/
+.main > header{
+    height:50px;
+    width:100%;
+    background:white;
+    border-bottom:1px solid #ddd;
+    box-sizing:border-box
+}
+.main > header > div{
+    height:100%;
+    width:90%;
+    margin:auto;
+    box-sizing:border-box
+}
+.main > header > div > h3{
+    color: #ABD157;
+    padding: 8px;
+    display: inline-block;
+    font-size: 25px
+}
+.main > header > div > div{
+    height:100%;
+    width:40%;
+    box-sizing:border-box;
+    float:right
+}
+.main > header > div > div > p{
+    float:right;
+    text-transform:uppercase;
+    color:#ABD157;
+    font-size:15px;
+    font-weight:bold;
+    padding:15px;
+    border-bottom:3px solid transparent;
+    cursor:pointer
+}
+.main > header > div > div > p:hover{
+    border-bottom:3px solid #ABD157;
+}
+/*-------------------------------------------- VIDEO PART ------------------------------------------------------------*/
+.main > header + div{
+    height:calc(100% - 50px);
+    width:100%;
+    position:relative;
+}
+.main > header + div > div{
+    height:100%;
+    width:100%;
+    position:relative;
+}
+video{
+    height:auto;
+    width:100%;
+    position:fixed;
+}
+/*-------------------------------------------- VIDEO TOP PART -------------------------------------------------------*/
+
+.cnt-div {
+    height:100%;
+    width:100%;
+}
+#top-div{
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+    background:rgba(128, 128, 128, 0.39);
+    text-align:center;
+    overflow:auto
+}
+#top-div h1{
+    font-size:55px;
+    color: white;
+    padding-top:225px;
+    letter-spacing:5px;
+    text-shadow:1px 1px 1px #ABD157;
+}
+#top-div h1:nth-child(2){
+    padding-top:10px;
+}
+/*-------------------------------------------- SIGNUP PART -------------------------------------------------------*/
+#signup-div,#signin-div,#forget{
+    height: 520px;
+    width: 400px;
+    background-color: #F2F2F2;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px black;
+    position: absolute;
+    top: 10%;
+    left: 34%;
+    text-align:center;
+    display:none;
+}
+#signup-div h3,#signin-div h3,#forget h3{
+    border-bottom:1px solid #ddd;
+    color:#ABD157;
+    text-shadow:1px 2px white;
+    padding:15px 0;
+}
+#signup-div h3 i,#signin-div h3 i,#forget i{
+    float: right;
+    margin: 0px 10px 0px 0px;
+    color: #ABD157;
+    font-size: 20px !important;
+    cursor: pointer
+}
+#signup-div h3 i:hover,#signin-div h3 i:hover,#forget h3 i:hover{
+    color:red !important;
+}
+#signup-div input,#signin-div input,#signup-div select,#forget input{
+    margin: 20px 25px 0px 25px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 80%;
+    box-shadow: 0px 0px 5px #ddd inset
+}
+#signup-div select{
+    background: white;
+    width: 85%;
+    color: gray;
+    padding: 9px;
+}
+#signup-div input:focus , #signin-div input:focus,#signup-div select:focus{
+    outline: 2px solid #6CBCFF
+}
+#signup-div div,#signin-div div,#forget div{
+    height:25px;
+    width:84%;
+    margin:auto;
+    background:transparent;
+    padding-top:25px;
+    color:red;
+}
+#signup-div button,#signin-div button,#forget button{
+    padding: 10px 35px;
+    margin: 5px 0 15px;
+    border-radius: 3px;
+    background-color: #739822;
+    border: 1px solid #739822;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px
+}
+#signin-div,#forget{
+    height:400px;
+    top:15%;
+}
+#signin-div a{
+    text-decoration:none;
+    cursor: pointer;
+    font-size:15px;
+    font-family:sans-serif;
+    color: rgb(115, 152, 34)
+}
+/*--------------------------------------- Forget password ------------------------------------------------------------*/
+#forget{
+    height:250px;
+    width:275px;
+    left: 40%;
+    top: 30%
+}
+#forget input{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 83%;
+}
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://zohocarpooling.zcodeusers.com/ZCP/Css/post.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+    <script src="https://zohocarpooling.zcodeusers.com/ZCP/Js/post.js"></script>
+    <title>post</title>
+</head>
+<body>
+    <div class="whlediv">
+        <div class="maindiv">
+            <!-- Header Part-->
+            <header>
+                <div></div>
+                <div>
+                    <div>
+                        <p>Location</p>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </header>
+            <!-- Post Part-->
+            <div>
+                <div>
+                    <div>
+                        <p>enter your details</p>
+                    </div>
+                     <div>
+                    <ul id="fir-ul">
+                        <li class="fir">1</li>
+                        <li class="lin">
+                            <div></div>
+                        </li>
+                        <li class="fir ma-lef">2</li>
+                         <li class="lin">
+                             <div></div>
+                         </li>
+                        <li class="fir ma-lef">3</li>
+                            <li class="lin">
+                                 <div></div>
+                             </li>
+                        <li class="fir ma-lef">4</li>
+                    </ul>
+                    <div id="first">
+                        <input type="text" name="from" id="From" placeholder="From"/>
+                        <input type="text" name="to" id="To" placeholder="To"/>
+                        <input type="text" id="via" placeholder="Via Place (ex: city1,city2,city3)" />
+                        <input type="text" id="Places1" placeholder="Starting Places (ex: street1,street2,street3) " />
+                        <input type="text" id="Places2" placeholder="Stoping Places (ex: street1,street2,street3)" />
+                    </div>
+                    <div id="second">
+                        <input type="date" name="from" id="Date" placeholder="date"/>
+                        <input type="text/number" name="to" id="Time" placeholder="Time (ex:13:10)"/>
+                        <select id="flux"  style="width: 98%;">
+                            <option>Time Flexibility</option>
+                            <option >10 mins</option>
+                            <option >20 mins</option>
+                            <option >30 mins</option>
+                        </select>
+                        <select id="Travel_type"  style="width: 98%;">
+                            <option>Travel_type</option>
+                            <option id="ladies" value="Ladies Only">Ladies Only</option>
+                            <option id="gents" value="Gents Only">Gents Only</option>
+                            <option id="combined" value="Combined">Combined</option>
+                        </select>
+                        <div class="clear"></div>
+                    </div>
+                    <div id="third">
+                        <select id='seats'>
+                            <option>Total seats</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <input id="male" placeholder="price for Male per seat"/>
+                        <input id="female" placeholder="price for Female per seat"/>
+                        <input id="child" placeholder="price for Child per seat"/>
+                        <select id="luggage">
+                            <option>Luggage</option>
+                            <option value="Less">Less</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                        </select>
+                    </div>
+                    <div id="fourth">
+                        <select id="Car">
+                            <option>Car Name</option>
+                            <option value="Audi">Audi</option>
+                            <option value="Maruthi">Maruthi</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                        </select>
+                        <label for="chkPassport" class="check">
+                        <input type="checkbox" id="chkPrivate" />
+                        Private Driver needed?</label>
+                        <form id="CarImage" action='/addCarImage' method='post' enctype='multipart/form-data'  >
+                        <label class="label">
+						    <input type="file" id="carImage" name = "carImage" accept="image/*" />
+						    <div class="blur">Upload your car Image</div>
+					    </label>
+					    </form>
+					    <div class="clear"></div>
+					    <div class="error" id="error"></div>
+                    </div>
+                    <button type="submit" class="previous"><i class="fa fa-hand-o-left" aria-hidden="true"></i> Previous</button>
+                    <button type="submit" class="next">NEXT <i class="fa fa-hand-o-right" aria-hidden="true"></i></button>
+                    <button type="submit" class="next nextsubmit" style="display:none" id="submit">SUBMIT <i class="fa fa-hand-o-right" aria-hidden="true"></i></button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

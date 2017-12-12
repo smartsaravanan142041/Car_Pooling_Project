@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.0.2.js"></script>
+        <title>ProFile</title>
+    </head>
+    <body>
+        <div id="test">
+        <script id="helloworld" type="text/x-handlebars-templete">
+            <div>
+            <div id="Email">{{Email}}</div>
+            <div id="Name">{{Name}}</div>
+            <div style="height: 120px;width: 120px;border-radius: 60px;background-image:url('{{Path}}');background-size: 100% 100%;background-repeat: no-repeat;"></div>
+            </div>
+        </script>
+        </div>
+        <div>
+            <select id="Car">
+                <option>Audi</option>
+                <option>TATA</option>
+                <option>Maruthi</option>
+            </select>
+            <input id="From" placeholder="Starting Place">
+            <input id="To" placeholder="Droping Place">
+            <input id="Date" type="Date">
+            <input id="Time" placeholder="HH:MM AM/PM">
+            <input id="Places1" placeholder="Pickup places">
+            <input id="Places2" placeholder="Droping places">
+            <select id="luggage">
+                <option>Less</option>
+                <option>Medium</option>
+                <option>Large</option>
+            </select>
+            <select id="flux">
+                <option>10</option>
+                <option>20</option>
+                <option>30</option>
+            </select>
+            <select id="Travel_type">
+                <option>Ladies only</option>
+                <option>Gents only</option>
+                <option>Combined</option>
+            </select>
+            <input id="male" placeholder="Male/Seat">
+            <input id="female" placeholder="Female/Seat">
+            <input id="child" placeholder="child/Seat (6-12 years)">
+            <input id='seats' placeholder="No. of seats">
+            <div id="poda"></div>
+            <button id="submit" type="submit">clickme</button>
+        </div>
+        
+        <div>
+            <br>
+            <br>
+            <input placeholder="From" id='from'><input placeholder="To" id='to'>
+            <button id="my123">Touch me..</button>
+            <br>
+            <br>
+        </div>
+        
+        <div>
+            <br>
+            <br>
+            <input placeholder="profile" id='profile'>
+            <button id="view_detail">Get detail</button>
+            <br>
+            <br>
+        </div>
+        <div id="qwert" style="height:100px; width:100px; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+        <div>
+            <button id="logout">Signout</button>
+        </div>
+        
+        <script>
+            $(document).ready(function(){
+                getImage();
+                if(document.URL=="http://zohocarpooling.zcodeusers.com/zcp.zoho.com/home"){
+                    $.post("/getAllPost",function(reply,status){
+                        var posts = JSON.parse(reply);
+                        console.log(posts);
+                    });
+                }
+    
+                function getImage(){
+                    var testhtml = document.getElementById("helloworld").innerHTML;
+                    var handlebars = Handlebars.compile(testhtml);
+                    $.post("/getImage",function(reply,status){
+                        var object = JSON.parse(reply);
+                        var okdata = handlebars(object);
+                        document.getElementById("test").innerHTML=okdata;
+                    });
+                }
+                
+
+                
+                $("#submit").click(function(){
+                    var Name = $("#Name").text();
+                    var Email = $("#Email").text();
+                    var car = $("#Car").val();
+                    var from = $("#From").val();
+                    var to = $("#To").val();
+                    var date = $("#Date").val();
+                    var time = $("#Time").val();
+                    var place1 = ($("#Places1").val()).split(",");
+                    var place2 = ($("#Places2").val()).split(",");
+                    var lugg = $("#luggage").val();
+                    var seat = $("#seats").val();
+                    var nDate = new Date().toString();
+                    var flux = $("#flux").val();
+                    var Travel_type = $("#Travel_type").val();
+                    var male = $("#male").val();
+                    var female = $("#female").val();
+                    var child = $("#child").val();
+                    var list = nDate.split(" ");
+                    var asdf =list[0]+", "+ list[1]+" "+list[2]+" "+list[3]+" "+list[4];
+                    var my_obj = {'Name':Name,'Email':Email,'CarModel':car,'From':from,'To':to,'PostingTime':asdf,'StartingTime':date+" "+time,'StartingPlaces':place1,'StopingPlaces':place2,'Flux':flux,'NumberOFSeats':Number(seat),'Luggage':lugg,'Travel_type':Travel_type,'Male':male,'Female':female,'Child':child};
+                    
+                    if(($("#carImage").val()).length>0) {
+                        $.post('/addaRide',
+                        my_obj,
+                        function(data,status){
+                           if(data==='ok'){
+                               location.href='zcp.zoho.com/home';
+                           }
+                           else{
+                               $("#poda").text(data);
+                           }
+                        });
+                    } else {
+                        $("#poda").text("");
+                    }
+                    
+                });
+                
+                });
+                
+                $("#my123").click(function(){
+                    var Name = $("#Name").text();
+                    var Email = $("#Email").text();
+                    var from = $("#from").val();
+                    var to = $("#to").val();
+                    var my_object = {'Name':Name, 'Email':Email, 'from':from, 'to':to};
+                    
+                    $.post("/findMyRide", my_object, function(data, status){
+                        if(data=="no_results"){
+                            document.getElementById("qwert").style.backgroundImage = "url('https://zohocarpooling.zcodeusers.com/ZCP/AppImage/no_trips_found_dribbble.png')"
+                        }
+                        else if(data.indexOf("[{")!==-1){
+                            console.log("hi da machi");
+                            var obj = JSON.parse(data);
+                        }
+                        else if(data == "<script>location.href='/404_not_found_page'<"+"/script>"){
+                            location.href='404_not_found_page';
+                        }
+                        else{
+                            $("#poda").text(data);
+                        }
+                    });
+                });
+                
+                $("#view_detail").click(function(){
+                    var Name = $("#Name").text();
+                    var Email = $("#Email").text();
+                    var view_email = $("#profile").val();
+                    var person_object = {"Name":Name, "Email":Email, "viewEmail":view_email};
+                    $.post("/viewAnyProfile", person_object, function(data, status){
+                        alert(data);
+                        if(data=='exist'){
+                            $.post("/get_His_Name",{"Email":view_email}, function(data, status){
+                                alert(data);
+                                if(data.indexOf('{"Name"')!==-1){
+                                    var hisObject = JSON.parse(data);
+                                    alert(hisObject.Type)
+                                    if(hisObject.Type=="Owner"){
+                                        $.post("/get_His_Ride", {"Email":hisObject.Email}, function(data, status){
+                                            console.log(data);
+                                            if(data==="no_results"){
+                                                document.getElementById("qwert").style.backgroundImage = "url('https://zohocarpooling.zcodeusers.com/ZCP/AppImage/no_trips_found_dribbble.png')";
+                                            }
+                                            else if(data.indexOf('[{"Name"')!==-1){
+                                                var object = JSON.parse(data);
+                                                console.log(object);
+                                            }
+                                            else{
+                                                //location.href='/404_not_found_page';
+                                            }
+                                        });
+                                    }
+                                }
+                                else if(data == "<script>location.href='/404_not_found_page'<"+"/script>"){
+                                    location.href='/404_not_found_page';
+                                }
+                                else{
+                                    $("#poda").text(data);
+                                }
+                            });
+                        }
+                        else if(data == "<script>location.href='/404_not_found_page'<"+"/script>"){
+                            location.href='404_not_found_page';
+                        }
+                        else{
+                            $("#poda").text(data);
+                        }
+                    });
+                });
+                
+                // <li><a style='cursor:pointer' onclick='sendmov(\""+i+"\")'>"+comm+"</a></li>
+            });
+        </script>
+    </body>
+</html>

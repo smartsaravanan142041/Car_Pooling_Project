@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ZCP</title>
+    <link rel="shortcut icon" href="http://www.pngmart.com/files/3/Aventador-PNG-HD.png" type="image/x-icon">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://zohocarpooling.zcodeusers.com/ZCP/Css/verify.css" />
+    <script src="https://zohocarpooling.zcodeusers.com/ZCP/Js/verify.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <title>verify</title>
+</head>
+<body>
+    <div class="whole">
+        <div class="main">
+            <div class="inrwhle">
+                <h4 id="username"></h4>
+                <form id="proFile" action='/addProFile' method='post' enctype='multipart/form-data'  >
+                <div class="prfle">
+                    <label class="contanier">
+                        <input id="Photo" type="file" accept="image/*" name='filetoupload' style="opacity:0" />
+                    </label>
+                </div>
+                </form>
+                <div class="snddiv">
+                <!--<p>Are You</p>-->
+                <select id="Type">
+                    <option>Are You</option>
+                    <option>Car-Owner</option>
+                    <option>Co-Traveller</option>
+                    <option>Private Driver</option>
+                </select>
+                <select id="Gender">
+                    <option>Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Others</option>
+                </select>
+                <input id="DOB" type="Date" placeholder="DOB"/>
+                <input id="otp" type="text/number" placeholder="OTP Number">
+                <div class="errordiv"></div>
+                <a id="resend">Resend OTP</a>
+                <button id="ok" type="submit">Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
