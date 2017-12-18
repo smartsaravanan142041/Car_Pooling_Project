@@ -4,10 +4,7 @@
      function getmyname(){
      $.post("/getmyname",function(data,status){
          if(data =="<script>location.href='/404_not_found_page'</script>"){
-             
-         }
-         else if(data=="<script>location.href='/home'</script>"){
-             
+             loction.href="/404_not_found_page";
          }
          else
          {
@@ -26,21 +23,19 @@
                 $.post("/ForgotMyPass",{'OTP':otp,'Password':new_pass,'Re_Password':re_new_pass},
                 function(data,status){
                     if(data==="done"){
-                        alert("hi");
-                    }
-                    else if(data=="<script>location.href='/home'</script>"){
+                    } else if(data=="<script>location.href='/home'</script>"){
                         location.href='/home';
-                    }
-                    else{
+                    
+                    } else if(data=="<script>location.href='/404_not_found_page'</script>"){
+                        location.href='/404_not_found_page';
+                    } else{
                         $("#summa").text(data);
                     }
                 });
-            }
-            else{
+            } else{
                 $("#summa").text("Re-enter Password is wrong");
             }
-        }
-        else{
+        } else{
             $("#summa").text("Enter all values");
         }
     });
@@ -48,10 +43,13 @@
         var name=$("#namediv").text();
         $.post("/resendotp",{"Username":name},
         function(data, status){
-            if(data=="done")
+            if(data=="done") {
                 $("#summa").text("OTP send for your Email");
-            else
-                location.href="/home";
+             } else if(data=="<script>location.href='/home'</script>"){
+                 location.href='/home';
+             }else {
+                 location.href='/404_not_found_page';
+             }
         });
     });
     

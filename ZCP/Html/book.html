@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" href="https://zohocarpooling.zcodeusers.com/ZCP/Css/book.css" />
+        <link rel="stylesheet" href="https://zohocarpooling.zcodeusers.com/ZCP/Css/book1.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+        <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.0.2.js"></script>
+        <script src="https://zohocarpooling.zcodeusers.com/ZCP/Js/book.js"></script>
+    </head>
+    <body>
+        <div id="bookPage" class="bookwhlediv"></div>
+    <script id="booking" type="text/x-handlebars-templete">
+            <i class="fa fa-home homeicon" id="home" aria-hidden="true"></i>
+            <div class="userprofilediv" style="background-image: url('{{MyImage}}');">
+                <div class="usershowdiv">
+                    <h3 id="Name">{{MyName}}</h3>
+                    <p id="Email" class="usermail">{{MyEmail}}</p>
+                </div>
+            </div>
+            <div class="bookinrdiv">
+                <div class="snddiv">
+                        <div class="fromc">{{From}}</div>
+                        <div class="cnge"></div>
+                        <div class="toc">{{To}}</div>
+                        </div>
+                <div class="frstbook">
+                    <p>Name:</p>
+                    <p>Pickup Point :</p>
+                    <p>Drop Point :</p>
+                    <p>via :</p>
+                    <p>Amount per Male :</p>
+                    <p>Amount per Fe-Male :</p>
+                    <p>Amount per Child :</p>
+                    <p>luggage :</p>
+                    <p>Sheat :</p>
+                </div>
+                <div class="sndbook"> 
+                    <div >{{Name}}</div>
+                    <select id="Pickup" class="pick"></select>
+                    <select id="Drop" class="drop"> </select>
+                    <div >{{Via}}</div>
+                    <div >{{Male}}</div>
+                    <div>{{Female}}</div>
+                    <div>{{Child}}</div>
+                    <div class="luggage">{{Luggage}}</div>
+                    <input type="text" id="seat" placeholder="Only 3 Seats are allowed" class="sheet"/>
+                    <button type="submit" class="plus plusone">+</button>
+                    <div class="extra extraone">
+                        <input id="ex_name1" type="text" class="nameextra" placeholder="Name"/>
+                        <input id="ex_age1" type="number" placeholder="Age"/>
+                    </div>
+                    <button type="submit" class="plus plustwo">+</button>
+                    <button type="submit" class="plus cancel canone">x</button>
+                    <div class="extra extratwo">
+                        <input id="ex_name2" type="text" class="nameextra" placeholder="Name"/>
+                        <input id="ex_age2" type="number" placeholder="Age"/>
+                    </div>
+                    <button type="submit" class="plus cancel cantwo">x</button>
+                </div>
+                <div style="clear:both"></div>
+                <div class="error"></div>
+                <button type="submit" data-ember-action="{{Id}}" class="book">Book</button>
+                <div style="background-image: url('{{CarPath}}');" class="imgdiv"></div>
+            </div>
+    </script>
+    <script id="Options" type="text/x-handlebars-templete">
+    {{#each street}}
+        <option>{{Place}}</option>
+    {{/each}}
+    </script>
+    </body>   
+</html>

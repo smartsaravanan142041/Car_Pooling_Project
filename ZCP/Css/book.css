@@ -1,0 +1,160 @@
+body,html{
+    height:100%;
+    width:100%;
+    margin:0;
+    padding:0
+}
+.bookwhlediv{
+    height:100%;
+    width:100%;
+    display:flex;
+    font-family:'Lato',sans-serif;
+}
+.bookinrdiv{
+    width:500px;
+    margin:auto;
+    border:1px solid #ddd;
+    box-shadow:1px 1px 20px #eee
+}
+.bookinrdiv > .snddiv{
+    margin:0 auto
+}
+.frstbook{
+    width:35%;
+    font:bold 15px 'Lato',sans-serif;
+    float:left;
+    text-align:right;
+}
+.frstbook p{
+    padding:20px 0
+}
+.sndbook{
+    width:65%;
+    float:left
+}
+.sndbook > input:focus , .sndbook > select:focus{
+    border-bottom:1px solid blue
+}
+.sndbook > input,.sndbook > select,.sndbook > div{
+    height:25px;
+    width:250px;
+    border:0;
+    background:transparent;
+    border-bottom:1px solid #ddd;
+    margin:15px 0 10px 10px;
+    outline:0;
+    display:inline-block
+}
+.sndbook > div{
+    height: 35px;
+    margin-top:10px;
+    box-sizing: border-box;
+    padding-top: 15px;
+}
+.sndbook > .pick,.sndbook > .drop{
+    margin-top:23px
+}
+.sndbook > .sheet{
+    margin-top:16px
+}
+.sndbook > .extra{
+    display:inline-flex;
+    border:0
+}
+.sndbook .plus{
+    background:#eee;
+    border-radius:3px;
+    border:1px solid #ddd;
+    cursor: pointer;
+    outline:0;
+    margin:4px
+}
+.sndbook > .extra > input{
+    height:100%;
+    width:50%;
+    border:0;
+    outline:0;
+    padding-left:10px;
+    border-bottom:1px solid #ddd;
+    box-sizing:border-box;
+}
+.sndbook > .extra > .nameextra{
+    border-right:1px solid #ddd
+}
+.sndbook .cancel{
+    background:#ff000038;
+    border:1px solid red
+}
+.sndbook > .extraone,.sndbook > .extratwo,.plustwo,.canone,.cantwo{
+    display:none
+}
+.bookinrdiv > .error{
+    height:25px;
+    width:100%;
+    display:block;
+    text-align:center;
+}
+.bookinrdiv{
+    position:relative;
+}
+.bookinrdiv > .imgdiv{
+    height: 150px;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    left: -180px;
+    box-shadow: 1px 1px 20px #ddd;
+    background-color:white;
+    background-image: url("http://cbw.ge/wp-content/uploads/2017/07/elektromos_auto.jpg");
+    background-size:100% 100%;
+}
+.userprofilediv {
+    height: 50PX;
+    width: 50PX;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    background-size: 100% 100%;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.homeicon {
+    position: absolute;
+    font-size: 25px !important;
+    top: 10px;
+    left: 25px;
+    color: #50AA09;
+    cursor: pointer;
+}
+.usermail {
+    padding-top: 10px;
+}
+.usershowdiv {
+    height: auto;
+    width: 275px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px #eee;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    text-align: center;
+    padding: 20px 0;
+    display: none;
+}
+.userprofilediv:hover .usershowdiv {
+    display: block;
+}

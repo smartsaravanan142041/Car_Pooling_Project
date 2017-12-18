@@ -9,17 +9,55 @@ $(document).ready(function() {
              var object = JSON.parse(reply);
              var okdata = handlebars(object);
              document.getElementById("setProfile").innerHTML=okdata;
+             getMyPost();
          });
     }
     
+    function getMyPost() {
+        var testhtml = document.getElementById("htmlscript").innerHTML;
+        var handlebars = Handlebars.compile(testhtml);
+        $.post("/sendPostDetail", function(data, status){
+            var srtplace = "";
+            var stoplace = "";
+            var object = JSON.parse(data);
+            var okdata = handlebars(object);
+            document.getElementById("reEntetPost").innerHTML=okdata;
+            $("#flux").val(object.Flux);
+            $("#Travel_type").val(object.Travel_type);
+            $("#Date").val((object.StartingTime).split(" ")[0]);
+            $("#Time").val((object.StartingTime).split(" ")[1]);
+            $("#seats").val(object.NumberOFSeats);
+            $("#Car").val(object.CarModel);
+            $("#luggage").val(object.Luggage);
+            for(var i=0;i<(object.StartingPlaces).length;i+=1) {
+                if(i==(object.StartingPlaces).length-1) {
+                    srtplace+=(object.StartingPlaces)[i];
+                    $("#Places1").val(srtplace);
+                } else {
+                    srtplace = srtplace+(object.StartingPlaces)[i]+",";
+                }
+            }
+            
+            
+            for (var j=0; j<(object.StopingPlaces).length; j+=1) {
+                if(j==(object.StopingPlaces).length-1) {
+                    stoplace+=(object.StopingPlaces)[j];
+                    $("#Places2").val(stoplace);
+                } else {
+                    stoplace = stoplace+(object.StopingPlaces)[j]+",";
+                }
+            }
+        });
+    }
+    
     var postcount = -1;
-    $(".next").click(function() {
+    $(document).on("click",".next",function() {
         if (postcount < 2) {
             postcount += 1;
         }
         postChange(postcount);
     });
-    $(".previous").click(function() {
+    $(document).on("click",".previous",function() {
         if (postcount >= 0) {
             postcount -= 1;
         }
@@ -57,8 +95,7 @@ $(document).ready(function() {
             $(".nextsubmit").css("display", "block");
         }
     }
-
-    $("#submit").click(function() {
+    $(document).on("click","#submit",function() {
         var Name = $("#Name").text();
         var Email = $("#Email").text();
         var car = $("#Car").val();
@@ -105,7 +142,7 @@ $(document).ready(function() {
             if(checkbox.checked) {
                 my_obj.Private_Driver="Yes";
             }
-            $.post('/addaRide',
+            $.post('/editMyPost',
                 my_obj,
                 function(data, status) {
                     if (data === 'ok') {

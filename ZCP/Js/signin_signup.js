@@ -37,12 +37,12 @@
     
     $("#createacc").click(function(){
 	var check = true;
-	var name = $("#Name").val();
-	var email = $("#Email").val();
-	var password = $("#Password").val();
-	var re_password = $("#Re-Password").val();
-	var phone = $("#Phone").val();
-	var url = {'Name':name, 'Email':email, 'Password':password,'Re_Password':re_password, 'Gender':"", 'DOB':"", 'Phone':phone, 'Nick_Name':"", 'Age':"", 'Married_Status':"", 'Personal_Email':"",'Type':"","Status":"Failure","Path":"","CarPath":""};
+	var name = ($("#Name").val()).trim();
+	var email = ($("#Email").val()).trim();
+	var password = ($("#Password").val()).trim();
+	var re_password = ($("#Re-Password").val()).trim();
+	var phone = ($("#Phone").val()).trim();
+	var url = {'Name':name, 'Email':email, 'Password':password,'Re_Password':re_password, 'Gender':"", 'DOB':"", 'Phone':phone, 'Nick_Name':"", 'Age':"", 'Married_Status':"", 'Personal_Email':"",'Type':"","Status":"Failure","Path":""};
 
     if(name.length>0 && email.length>0 && password.length>0 && re_password.length>0 && phone.length>0)
     {
@@ -72,6 +72,12 @@
 	    {
 		    location.href="/home/next";
 	    }
+	    else if(data=="<script>location.href='/404_not_found_page'</script>") {
+	        location.href="/404_not_found_page";
+	    }
+	    else if(data=="<script>location.href='/zcp.zoho.com/home'</script>") {
+	        location.href="/zcp.zoho.com/home";
+	    }
 	    else
 	    {
 	         $("#instruction").html(data);
@@ -83,9 +89,9 @@
        var name = $("#name").val();
        var email = $("#email").val();
        var password = $("#pass").val();
-       var url = {"Name":name,"Email":email,"Password":password};
+       var url = {"Email":email,"Password":password};
        
-       if(name.length=='0' && email.length=='0' && password.length=='0')
+       if(email.length=='0' && password.length=='0')
        {
            $("#errordiv").text("Enter all values");
 
@@ -99,9 +105,16 @@
         	    {
         	        location.href="/home/next";
         	    }
+        	    else  if(data=="<script>location.href='/zcp.zoho.com/home'</script>")
+        	    {
+        	        location.href="/zcp.zoho.com/home";
+        	    }
         	    else if(data=="ok")
         	    {
         	        location.href="/zcp.zoho.com/home/";
+        	    }
+        	    else if(data=="<script>location.href='/404_not_found_page'</script>") {
+        	        location.href="/404_not_found_page";
         	    }
         	    else
         	    {
@@ -121,6 +134,9 @@
                 if(data==="done")
                 {
                     location.href="/forgotMyPassword";
+                }
+                else if(data=="<script>location.href='/404_not_found_page'</script>") {
+                    location.href="/404_not_found_page";
                 }
                 else
                 {

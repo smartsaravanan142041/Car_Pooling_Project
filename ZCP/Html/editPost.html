@@ -4,10 +4,10 @@
     <link rel="shortcut icon" href="https://www.carpoolworld.com/images/logo_v3/carpoolworld_logo_3_200.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="https://zohocarpooling.zcodeusers.com/ZCP/Css/post.css" />
+    <link rel="stylesheet" href="https://zohocarpooling.zcodeusers.com/ZCP/Css/editPost.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
     <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.0.2.js"></script>
-    <script src="https://zohocarpooling.zcodeusers.com/ZCP/Js/post.js"></script>
+    <script src="https://zohocarpooling.zcodeusers.com/ZCP/Js/editPost.js"></script>
     <title>post</title>
 </head>
 <body>
@@ -20,7 +20,18 @@
             </div>
             </header>
             <!-- Post Part-->
-            <div>
+            <div id="reEntetPost">
+
+            </div>
+        </div>
+    </div>
+<script id="profileheader" type="text/x-handlebars-templete">
+<div class="userprofilediv" style="background-image: url('{{Path}}');">
+<div class="usershowdiv" ><h3 id="Name">{{Name}}</h3><p id="Email" class="usermail">{{Email}}</p>
+</div>
+</div>
+</script>
+<script id="htmlscript" type="text/x-handlebars-templete">
                 <div>
                     <div>
                         <p>enter your details</p>
@@ -42,22 +53,22 @@
                         <li class="fir ma-lef">4</li>
                     </ul>
                     <div id="first">
-                        <input type="text" name="from" id="From" placeholder="From"/>
-                        <input type="text" name="to" id="To" placeholder="To"/>
-                        <input type="text" id="via" placeholder="Via Place (ex: city1,city2,city3)" />
+                        <input type="text" value="{{From}}" name="from" id="From" placeholder="From"/>
+                        <input type="text" value="{{To}}" name="to" id="To" placeholder="To"/>
+                        <input type="text" value="{{Via}}" id="via" placeholder="Via Place (ex: city1,city2,city3)" />
                         <input type="text" id="Places1" placeholder="Starting Places (ex: street1,street2,street3) " />
                         <input type="text" id="Places2" placeholder="Stoping Places (ex: street1,street2,street3)" />
                     </div>
                     <div id="second">
                         <input type="date" name="from" id="Date" placeholder="date"/>
                         <input type="text/number" name="to" id="Time" placeholder="Time (ex:13:10)"/>
-                        <select id="flux"  style="width: 98%;">
+                        <select id="flux" value="{{Flux}}"  style="width: 98%;">
                             <option>Time Flexibility</option>
                             <option >10 mins</option>
                             <option >20 mins</option>
                             <option >30 mins</option>
                         </select>
-                        <select id="Travel_type"  style="width: 98%;">
+                        <select id="Travel_type" value="{{Travel_type}}"  style="width: 98%;">
                             <option>Travel_type</option>
                             <option id="ladies" value="Ladies Only">Ladies Only</option>
                             <option id="gents" value="Gents Only">Gents Only</option>
@@ -79,10 +90,10 @@
                             <option value="9">9</option>
                             <option value="10">10</option>
                         </select>
-                        <input id="male" placeholder="price for Male per seat"/>
-                        <input id="female" placeholder="price for Female per seat"/>
-                        <input id="child" placeholder="price for Child per seat"/>
-                        <select id="luggage">
+                        <input id="male" value="{{Male}}" placeholder="price for Male per seat"/>
+                        <input id="female" value="{{Female}}" placeholder="price for Female per seat"/>
+                        <input id="child" value="{{Child}}" placeholder="price for Child per seat"/>
+                        <select id="luggage" value="{{Luggage}}">
                             <option>Luggage</option>
                             <option value="Less">Less</option>
                             <option value="Medium">Medium</option>
@@ -90,7 +101,7 @@
                         </select>
                     </div>
                     <div id="fourth">
-                        <select id="Car">
+                        <select id="Car" value="{{Car_Model}}">
                             <option>Car Name</option>
                             <option value="Audi">Audi</option>
                             <option value="Maruthi">Maruthi</option>
@@ -102,7 +113,7 @@
                         <input type="checkbox" id="chkPrivate" />
                         Private Driver needed?</label>
                         <form id="CarImage" action='/addCarImage' method='post' enctype='multipart/form-data'  >
-                        <label class="label">
+                        <label class="label" style="background: url('{{CarPath}}');background-size: 100% 100%;">
 						    <input type="file" id="carImage" name = "carImage" accept="image/*" />
 						    <div class="blur">Upload your car Image</div>
 					    </label>
@@ -115,14 +126,6 @@
                     <button type="submit" class="next nextsubmit" style="display:none" id="submit">SUBMIT <i class="fa fa-hand-o-right" aria-hidden="true"></i></button>
                 </div>
                 </div>
-            </div>
-        </div>
-    </div>
-<script id="profileheader" type="text/x-handlebars-templete">
-<div class="userprofilediv" style="background-image: url('{{Path}}');">
-<div class="usershowdiv" ><h3 id="Name">{{Name}}</h3><p id="Email" class="usermail">{{Email}}</p>
-</div>
-</div>
 </script>
 </body>
 </html>

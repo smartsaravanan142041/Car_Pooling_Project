@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>ZCP</title>
+    <link rel="shortcut icon" href="https://www.carpoolworld.com/images/logo_v3/carpoolworld_logo_3_200.png" type="image/x-icon">
     <link rel="stylesheet" href="https://zohocarpooling.zcodeusers.com/ZCP/Css/home.css" />
     <link rel="stylesheet" href="https://zohocarpooling.zcodeusers.com/ZCP/Css/viewDetail.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -41,8 +42,16 @@
                             <input type="text" placeholder="To" id="to"/>
                             <button type="submit" id="my123" class="find">Find Ride</button>
                         </div>
+                        <div class="selectiondiv"><p class="text">Click the criteria</p>
+                            <div class="dropdowndiv" style="display: none;">
+                            <div class="option1">All</div>
+                            <div class="option1">Gents Only</div>
+                            <div class="option1">Ladies Only</div>
+                            <div class="option1">Combined</div>
+                        </div>
+                        </div>
                     </header>
-                    <div class="postwhlediv"><div id="no_trips" style="margin: auto;width: 650px;height: 650px;background-image: url('https://zohocarpooling.zcodeusers.com/ZCP/AppImage/no_trips_found_dribbble.png'); background-size: 100% 100%; background-repeat: no-repeat;margin-top: 70px; display: none; "></div></div>
+                    <div class="postwhlediv"></div>
                 </div>
             </div>
 <!--.... menudiv ....-->
@@ -59,15 +68,17 @@
                     <i class="fa fa-car" aria-hidden="true"></i>
                     <p>post</p>
                 </div>
-                 <div class="Rating">
-                    <i class="fa fa-star-o star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half-o star1" aria-hidden="true"></i>
-                    <i class="fa fa-star star2" aria-hidden="true"></i>
-                    <p>Rating</p>
+                <div class="Help">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                    <p>Help</p>
                 </div>
-                <div class="ride">
+                <div class="ride" id="ride">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
                     <p>view profile</p>
+                </div>
+                <div class="ride" id="logout">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <p>logout</p>
                 </div>
             </div>
 <!--... profilediv ....-->
@@ -77,7 +88,7 @@
                     </div>
                     <button type="submit" class="edit">Edit profile</button>
                     <button type="submit" class="chngpass">Change password</button>
-                    <button type="submit" id="logout">signout</button>
+                    <button type="submit" id="deleteacc">Delete Account</button>
                 </div>
 <!--... ratingdiv ...-->
                 <div class="ratingdiv">
@@ -103,7 +114,12 @@
         <div id="instruction"></div>
         <button id="change_my_pass" type="submit">Change</button>
     </div>
+    <div class="changepro" style="display: none;"></div>
     <div class="viewmapdiv"></div>
+    <div class="viewtravels" >
+        <div class="memberdiv" style="display: none; font-size: 22px; text-align: center; height: 29px; width: 100%; box-shadow: 1px 1px gray;">Travellers</div>
+        <div id="travelNames"></div>
+    </div>
         <div class="editpro">
          <h3>EDIT YOUR PROFILE</h3>
         <!--<input id="E-Name" type="text" placeholder="Name" />-->
@@ -125,17 +141,29 @@
         <button id="edit" type="submit">Edit</button>
         <button id="change" type="submit">Change</button>
     </div>
+    
+    <div class="changeprodiv" style="display: none;">
+        <h3>EDIT YOUR PROFILE</h3>
+           
+            <label><form id="proFile" action='/addProFile' method='post' enctype='multipart/form-data'  > 
+                <input id='ImagePath' type="file" name="filetoupload" accept="image/*"></form>
+            </label>
+        
+            <button id='chandeMyProfile' type="submit">CHANGE YOUR PHOTO</button>
+    </div>
+    
     <script id="helloworld" type="text/x-handlebars-templete">
-                            <div style="background-image:url('{{Path}}');"><div><p>change</p></div></div>
-                            <h5 id="Name">{{Name}}</h5>
-                            <p id="Email">{{Email}}</p>
-                        </script>
-                            <script id="viewProfiles" type="text/x-handlebars-templete">
-                                <div class="photoround" style="background-image:url('{{Path}}')"></div>
-                                <h1 class="name" id="viewProfileName">{{Name}}</h1>
-                                <p class="mail"><i class="fa fa-envelope mailicon" aria-hidden="true"></i>{{Email}}</p>
-                                <p class="phone"><i class="fa fa-mobile phoneicon" aria-hidden="true"></i>{{Phone}}</p>
-                            </script>
+        <div style="background-image:url('{{Path}}');"><div id="proFileChange"><p>change</p></div></div>
+        <h5 id="Name">{{Name}}</h5>
+        <p id="Email">{{Email}}</p>
+        </script>
+        
+        <script id="viewProfiles" type="text/x-handlebars-templete">
+            <div class="photoround" style="background-image:url('{{Path}}')"></div>
+            <h1 class="name" id="viewProfileName">{{Name}}</h1>
+            <p class="mail"><i class="fa fa-envelope mailicon" aria-hidden="true"></i>{{Email}}</p>
+            <p class="phone"><i class="fa fa-mobile phoneicon" aria-hidden="true"></i>{{Phone}}</p>
+        </script>
 <script id="postscript" type="text/x-handlebars-templete">
 
 {{#each post}}
@@ -143,18 +171,18 @@
     <div class="top">
         <div style="background-image: url('{{Image}}');"></div>
         <div class="tpdiv">
-            <h5>{{Name}}</h5>
+            <h5 >{{Name}}</h5>
             <br>
             <span>Time:</span>
             <p id="post_time">{{PostingTime}}</p></div>
-        <i class="fa fa-ellipsis-v more" id="more" aria-hidden="true">
+        <i class="fa fa-ellipsis-v more" id="more" viewBar="{{Id}}" aria-hidden="true">
         <div class="morediv">
-        <p>EDIT <i class="fa fa-pencil" aria-hidden="true"></i></p>
-        <p class="delete">DELETE <i class="fa fa-trash-o" aria-hidden="true"></i></p>
+        <p id="editPost" editId="{{Id}}">EDIT <i class="fa fa-pencil" aria-hidden="true"></i></p>
+        <p id="deletePost" deleteId="{{Id}}" class="delete">DELETE <i class="fa fa-trash-o" aria-hidden="true"></i></p>
     </div>
     </i>
 </div>
-<div class="ratinghidediv">
+<div bookingId="{{Id}}" class="ratinghidediv">
     <h5>car type :</h5>
     <div class="type">{{CarModel}}</div>
     <div class="date">{{StartingTime}}</div>
@@ -173,10 +201,13 @@
     <div class="seats aval">{{AvailableSeats}} nos</div>
     <h5 class="ava">available seats :</h5>
     <div class="clear"></div>
-    <button data-ember-action="{{Id}}" type="submit" id="mapView" class="map">Map view</button>
-    <button data-ember-action="{{Id}}" type="submit" id="bookRide" class="book">Book</button>
+    <button mapId="{{Id}}" type="submit" id="mapView" class="map">Map view</button>
+    <button bookId="{{Id}}" type="submit" id="bookRide" class="book">Book</button>
+    <button viewId="{{Id}}" type="submit" id="viewTravellers" class="book">View</button>
+    <button fullId="{{Id}}" type="submit" disabled="true" style="background-color:red" class="book">Full</button>
+    <button cancelId="{{Id}}" type="submit" id="cancelARide" class="book">cancel</button>
 </div>
-<div class="ratingshowdiv">
+<div ratingId="{{Id}}" class="ratingshowdiv">
     <div class="snddiv">
         <div class="fromc">{{From}}</div>
         <div class="cnge">
@@ -185,20 +216,31 @@
         </div>
         <div class="toc">{{To}}</div>
     </div>
-    <i class="fa fa-star-o star" star="one" aria-hidden="true"></i>
-    <i class="fa fa-star-o star" star="two" aria-hidden="true"></i>
-    <i class="fa fa-star-o star" star="three" aria-hidden="true"></i>
-    <i class="fa fa-star-o star" star="four" aria-hidden="true"></i>
-    <i class="fa fa-star-o star" star="five" aria-hidden="true"></i>
-    <button type="submit" class="submit">SUBMIT</button>
+    <div class="ratingstardiv" id="starDiv">
+    	<div class="a1"><span class="ratingstar" onclick="ratingStar(1)">&#x2605;</span></div>
+    	<div class="a1"><span class="ratingstar" onclick="ratingStar(2)">&#x2605;</span></div>
+    	<div class="a1"><span class="ratingstar" onclick="ratingStar(3)">&#x2605;</span></div>
+    	<div class="a1"><span class="ratingstar" onclick="ratingStar(4)">&#x2605;</span></div>
+    	<div class="a1"><span class="ratingstar" onclick="ratingStar(5)">&#x2605;</span></div>
+    </div>
+    <button type="submit" ratingId="{{Id}}" class="submit" id="ratingbut">SUBMIT</button>
 </div>
 </div>
 
 {{/each}}
 </script>
+<script id="no_posts" type="text/x-handlebars-templete">
+    <div id="no_trips" style="margin: auto;width: 400px;height: 400px;background-image: url('https://zohocarpooling.zcodeusers.com/ZCP/AppImage/no_trips_found_dribbble.png'); background-size: 100% 100%; background-repeat: no-repeat;margin-top: 70px;"></div>
+</script>
 
 <script id="ViewMap">
 <iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCHn5bBDrqWrRlcWx6dVOuItp-1OPHs9aQ&origin={{From}}&destination={{To}}&avoid=tolls|highways" style="height:100%;width:100%;" />
+</script>
+<script id="member_Names" type="text/x-handlebars-templete">
+    
+    {{#each riders}}
+    <div style="font-size: 22px; text-align: center; height: 35px; width: 100%;">{{Rider}}</div>
+    {{/each}}
 </script>
 </body>
 </html>
