@@ -466,23 +466,27 @@ function carPolling(req, res) {
                                                                                                                                     client.hget('cookieRideId', cookie, function(err, getId) {
                                                                                                                                         if (getId !== null) {
                                                                                                                                             client.hget('ride_id', getId, function(err, stringobject) {
-                                                                                                                                                if (reply.length > 0) {
-                                                                                                                                                    for (i of reply) {
-                                                                                                                                                        var oneDate = i.split(" ");
-                                                                                                                                                        if (i.split(" ")[0] === thisDate[0]) {
-                                                                                                                                                            if (((JSON.parse(stringobject).StartingTime).split(" ")[0]) === oneDate[0]) {
-                                                                                                                                                                editThis();
-                                                                                                                                                            } else {
-                                                                                                                                                                a = 'false';
-                                                                                                                                                                editThis();
+                                                                                                                                                if(stringobject!==null) {
+                                                                                                                                                    if (reply.length > 0) {
+                                                                                                                                                        for (i of reply) {
+                                                                                                                                                            var oneDate = i.split(" ");
+                                                                                                                                                            if (i.split(" ")[0] === thisDate[0]) {
+                                                                                                                                                                if (((JSON.parse(stringobject).StartingTime).split(" ")[0]) === oneDate[0]) {
+                                                                                                                                                                    editThis();
+                                                                                                                                                                } else {
+                                                                                                                                                                    a = 'false';
+                                                                                                                                                                    editThis();
+                                                                                                                                                                }
                                                                                                                                                             }
                                                                                                                                                         }
+                                                                                                                                                        editThis();
                                                                                                                                                     }
-                                                                                                                                                    editThis();
+                                                                                                                                                } else {
+                                                                                                                                                    res.end("<script>location.href='/404_not_found_page'</script>")
                                                                                                                                                 }
                                                                                                                                             });
                                                                                                                                         } else {
-                                                                                                                                            res.end("");
+                                                                                                                                            res.end("<script>location.href='/404_not_found_page'</script>");
                                                                                                                                         }
                                                                                                                                     });
                                                                                                                                 }
